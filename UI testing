@@ -1,0 +1,82 @@
+package Taks1;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.io.FileHandler;
+
+public class Task2 {
+	By first_link=By.xpath("//a[text()='https://www.getcalley.com/']");
+	By Second_link=By.xpath("//a[text()='https://www.getcalley.com/calley-call-from-browser/']");
+	By Third =By.xpath("//a[text()='https://www.getcalley.com/calley-pro-features/']");
+	By Fourth=By.xpath("//a[text()='https://www.getcalley.com/best-auto-dialer-app/']");
+	By Fifth=By.xpath("//a[text()='https://www.getcalley.com/how-calley-auto-dialer-app-works/']");
+	WebDriver driver;
+	public void LanchAUT() throws InterruptedException
+	{
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\KALYA\\OneDrive\\Desktop\\Driver\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+		driver =new ChromeDriver();
+		driver.get("https://www.getcalley.com/page-sitemap.xml");
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+	}
+	public void Web_screenshot() throws InterruptedException, IOException
+	{
+		driver.findElement(first_link).click();
+		Thread.sleep(2000);
+        File src=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);		
+        File doe=new File("C:\\Users\\KALYA\\OneDrive\\Desktop\\New_Screenshot\\screenshot1_1920x1080.png");
+ 		FileHandler.copy(src, doe);
+        
+ 		driver.navigate().back();
+ 		Thread.sleep(0);
+ 		driver.findElement(Second_link).click();
+ 		Thread.sleep(2000);
+ 		File src2=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);		
+        File doe2=new File("C:\\Users\\KALYA\\OneDrive\\Desktop\\New_Screenshot\\screenshot2_1920x1080.png");
+ 		FileHandler.copy(src2, doe2);
+ 		Thread.sleep(1000);
+ 		driver.navigate().back();
+ 		Thread.sleep(1000);
+ 		driver.findElement(Third).click();
+ 		Thread.sleep(1000);
+ 		File src3=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);		
+        File doe3=new File("C:\\Users\\KALYA\\OneDrive\\Desktop\\New_Screenshot\\screenshot3_1920x1080.png");
+ 		FileHandler.copy(src3, doe3);
+ 		Thread.sleep(1000);
+ 		driver.navigate().back();
+ 		Thread.sleep(1000);
+ 		driver.findElement(Fourth).click();
+ 		Thread.sleep(1000);
+ 		File src4=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);		
+        File doe4=new File("C:\\Users\\KALYA\\OneDrive\\Desktop\\New_Screenshot\\screenshot4_1920x1080.png");
+ 		FileHandler.copy(src4, doe4);
+ 		Thread.sleep(1000);
+ 		driver.navigate().back();
+ 		driver.findElement(Fifth).click();
+ 		Thread.sleep(1000);
+ 		File src5=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);		
+        File doe5=new File("C:\\Users\\KALYA\\OneDrive\\Desktop\\New_Screenshot\\screenshot5_1920x1080.png");
+ 		FileHandler.copy(src5, doe5);
+ 		Thread.sleep(1000);
+	}
+	public void quit()
+	{
+		driver.quit();
+	}
+	
+
+	public static void main(String[] args) throws InterruptedException, IOException {
+		Task2 obj=new Task2();
+		obj.LanchAUT();
+		obj.Web_screenshot();
+		obj.quit();
+
+	}
+
+}
